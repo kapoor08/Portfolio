@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0f172a;
+
+  --color-primary: #1e293b;
+  --color-primary-foreground: #f8fafc;
+
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #1e293b;
+
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #1e293b;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #f8fafc;
+
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #0f172a;
+
+  --radius: 0.5rem;
+
+  /* Dark‐mode fallback variables (won’t be used until .dark is set) */
+  --color-dark-background: #0f172a;
+  --color-dark-foreground: #f8fafc;
+
+  --color-dark-card: #0f172a;
+  --color-dark-card-foreground: #f8fafc;
+
+  --color-dark-popover: #0f172a;
+  --color-dark-popover-foreground: #f8fafc;
+
+  --color-dark-primary: #f8fafc;
+  --color-dark-primary-foreground: #1e293b;
+
+  --color-dark-secondary: #1e293b;
+  --color-dark-secondary-foreground: #f8fafc;
+
+  --color-dark-muted: #1e293b;
+  --color-dark-muted-foreground: #94a3b8;
+
+  --color-dark-accent: #1e293b;
+  --color-dark-accent-foreground: #f8fafc;
+
+  --color-dark-destructive: #7f1d1d;
+  --color-dark-destructive-foreground: #f8fafc;
+
+  --color-dark-border: #1e293b;
+  --color-dark-input: #1e293b;
+  --color-dark-ring: #cbd5e1;
+}
+
+/* 3) Override variables when .dark class is present: */
+.dark {
+  --color-background: var(--color-dark-background);
+  --color-foreground: var(--color-dark-foreground);
+
+  --color-card: var(--color-dark-card);
+  --color-card-foreground: var(--color-dark-card-foreground);
+
+  --color-popover: var(--color-dark-popover);
+  --color-popover-foreground: var(--color-dark-popover-foreground);
+
+  --color-primary: var(--color-dark-primary);
+  --color-primary-foreground: var(--color-dark-primary-foreground);
+
+  --color-secondary: var(--color-dark-secondary);
+  --color-secondary-foreground: var(--color-dark-secondary-foreground);
+
+  --color-muted: var(--color-dark-muted);
+  --color-muted-foreground: var(--color-dark-muted-foreground);
+
+  --color-accent: var(--color-dark-accent);
+  --color-accent-foreground: var(--color-dark-accent-foreground);
+
+  --color-destructive: var(--color-dark-destructive);
+  --color-destructive-foreground: var(--color-dark-destructive-foreground);
+
+  --color-border: var(--color-dark-border);
+  --color-input: var(--color-dark-input);
+  --color-ring: var(--color-dark-ring);
+
+  /* Also set the page’s background+foreground */
+  background-color: var(--color-dark-background);
+  color: var(--color-dark-foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 4) Base styles that use your CSS vars: */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* Use var(--color-…) instead of theme(...) */
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Focus‐visible outline for accessibility */
+  .focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+  .dark .focus-visible {
+    outline-color: var(--color-ring);
+  }
+}
+
+/* 5) Custom utilities and keyframes: */
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 6) Custom scrollbar styles: */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-border);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-dark-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted-foreground);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-dark-muted-foreground);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-foreground);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-foreground);
+}
+
+/* 7) Selection styles */
+::selection {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background-color: #60a5fa;
+  color: #0f172a;
+}
+
+/* 8) Smooth transitions for interactive changes */
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
