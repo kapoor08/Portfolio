@@ -7,7 +7,6 @@ import { AMO } from "@/core";
 const LatestArticlesSection = () => {
   const { actualTheme } = useTheme();
   const { data } = AMO.portfolio.medium.useGetMediumPosts();
-  console.log(data, "data data");
 
   return (
     <section
