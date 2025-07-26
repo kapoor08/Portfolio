@@ -28,7 +28,7 @@ const Navigation = () => {
               actualTheme === "dark" ? "text-white" : "text-slate-800"
             )}
           >
-            Portfolio
+            Lakshay Kapoor
           </div>
 
           <div className="hidden md:flex space-x-8">

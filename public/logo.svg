@@ -1,0 +1,8 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">  
+  <!-- Letter L -->
+  <path d="M 30 30 L 30 90 L 55 90 L 55 78 L 45 78 L 45 30 Z" 
+        fill="#fff" />
+  <!-- Letter K -->
+  <path d="M 65 30 L 65 90 L 78 90 L 78 65 L 88 90 L 103 90 L 86 58 L 100 30 L 86 30 L 78 50 L 78 30 Z" 
+         fill="#fff"  />
+</svg>

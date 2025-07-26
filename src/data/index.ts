@@ -82,31 +82,4 @@ const skills = [
   { name: "TypeScript", level: 85, category: "language" },
 ];
 
-const blogPosts = [
-  {
-    title: "Building Scalable React Applications",
-    excerpt:
-      "Learn the best practices for creating maintainable and scalable React applications with modern tools and techniques.",
-    date: "June 15, 2024",
-    image: "https://picsum.photos/800/600",
-    url: "#",
-  },
-  {
-    title: "The Future of Web Development",
-    excerpt:
-      "Exploring upcoming trends and technologies that will shape the future of web development in the next decade.",
-    date: "May 28, 2024",
-    image: "https://picsum.photos/800/600",
-    url: "#",
-  },
-  {
-    title: "Optimizing Performance in Next.js",
-    excerpt:
-      "Practical tips and techniques to improve the performance of your Next.js applications for better user experience.",
-    date: "April 10, 2024",
-    image: "https://picsum.photos/800/600",
-    url: "#",
-  },
-];
-
-export { menuOptions, projects, skills, blogPosts };
+export { menuOptions, projects, skills };

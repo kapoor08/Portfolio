@@ -2,10 +2,13 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { useTheme } from "@/provider/theme-provider";
-import { blogPosts } from "@/data";
+import { AMO } from "@/core";
 
 const LatestArticlesSection = () => {
   const { actualTheme } = useTheme();
+  const { data } = AMO.portfolio.medium.useGetMediumPosts();
+  console.log(data, "data data");
+
   return (
     <section
       id="blog"
@@ -35,7 +38,7 @@ const LatestArticlesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
+          {data?.data?.map((post, index) => (
             <Card
               key={index}
               className={cn(
@@ -47,9 +50,9 @@ const LatestArticlesSection = () => {
             >
               <div className="relative overflow-hidden">
                 <img
-                  src={post.image || "https://picsum.photos/800/600"}
+                  src={post.coverImage || "https://picsum.photos/800/600"}
                   alt={post.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
               </div>
@@ -60,7 +63,7 @@ const LatestArticlesSection = () => {
                     actualTheme === "dark" ? "text-slate-400" : "text-slate-500"
                   )}
                 >
-                  {post.date}
+                  {post.pubDate}
                 </div>
                 <CardTitle
                   className={cn(
@@ -78,7 +81,7 @@ const LatestArticlesSection = () => {
                     actualTheme === "dark" ? "text-slate-300" : "text-slate-600"
                   )}
                 >
-                  {post.excerpt}
+                  {post.description}
                 </p>
                 <Button
                   variant="link"
@@ -88,6 +91,7 @@ const LatestArticlesSection = () => {
                       ? "text-blue-400 hover:text-blue-300"
                       : "text-blue-600 hover:text-blue-800"
                   )}
+                  onClick={() => window.open(post.link, "_blank")}
                 >
                   Read More
                   <svg

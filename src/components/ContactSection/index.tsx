@@ -3,15 +3,119 @@ import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "../ui/button";
 import { useTheme } from "@/provider/theme-provider";
 import { toast } from "@/hooks/use-toast";
+import { ContactFormData, EmailConfig } from "@/core/portfolio/contact";
+import { AMO } from "@/core";
+import { contactFormSchema } from "@/schema/contact-form";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import z from "zod";
 
 const ContactSection = () => {
   const { actualTheme } = useTheme();
 
-  const handleContactSubmit = () => {
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+  type ContactFormSchema = z.infer<typeof contactFormSchema>;
+
+  // FIXED: Use individual mutations for better control
+  const confirmationMutation = AMO.portfolio.contact.useSendConfirmationEmail();
+  const notificationMutation = AMO.portfolio.contact.useSendNotificationEmail();
+
+  // Track if either email is sending
+  const isPending =
+    confirmationMutation.isPending || notificationMutation.isPending;
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid, isDirty },
+    watch,
+  } = useForm<ContactFormSchema>({
+    resolver: zodResolver(contactFormSchema),
+    mode: "onChange",
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
+
+  const messageValue = watch("message");
+  const subjectValue = watch("subject");
+
+  // FIXED: Corrected input classes logic
+  const getInputClasses = (hasError: boolean) => {
+    return cn(
+      "w-full px-4 py-2 rounded-md border transition-colors duration-300 focus:outline-0",
+      hasError
+        ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+        : actualTheme === "dark"
+        ? "bg-slate-700 border-slate-600 text-white focus:border-blue-500 focus:ring-blue-500"
+        : "bg-white border-slate-500 text-slate-700 focus:border-blue-400 focus:ring-blue-400"
+    );
+  };
+
+  const onSubmit: SubmitHandler<ContactFormSchema> = async (data) => {
+    try {
+      const emailConfig: EmailConfig = {
+        serviceId: "service_hvz80o7",
+        confirmationTemplateId: "template_cha0vyo",
+        notificationTemplateId: "template_rfjoq0h",
+        userId: "CGSxtWvw4qzxEOP05",
+        receiverEmail: "lakshaykapoor08@gmail.com",
+      };
+
+      // FIXED: Send both emails in parallel with proper error handling
+      const [confirmationResult, notificationResult] = await Promise.allSettled(
+        [
+          // Send confirmation email to the sender
+          confirmationMutation.mutateAsync({
+            formData: data as ContactFormData,
+            config: emailConfig,
+          }),
+          // Send notification email to you (the owner)
+          notificationMutation.mutateAsync({
+            formData: data as ContactFormData,
+            config: emailConfig,
+          }),
+        ]
+      );
+
+      // Check results and show appropriate messages
+      const confirmationSuccess = confirmationResult.status === "fulfilled";
+      const notificationSuccess = notificationResult.status === "fulfilled";
+
+      if (confirmationSuccess && notificationSuccess) {
+        // Both emails sent successfully
+        toast({
+          title: "Message sent successfully!",
+          description:
+            "Thanks for reaching out. You'll receive a confirmation email shortly, and I'll get back to you soon.",
+        });
+        reset(); // Clear form only on complete success
+      } else if (confirmationSuccess || notificationSuccess) {
+        // Partial success
+        toast({
+          title: "Message partially sent",
+          description: confirmationSuccess
+            ? "Your message was received, but there was an issue with the confirmation email. I'll still get back to you soon!"
+            : "Message received! Confirmation email sent, but there was an issue with the notification.",
+          variant: "default",
+        });
+        reset(); // Still clear form as message was received
+      } else {
+        // Both failed
+        throw new Error("Both emails failed to send");
+      }
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      toast({
+        title: "Failed to send message",
+        description:
+          "There was an issue sending your message. Please try again or contact me directly at lakshaykapoor08@gmail.com",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -32,7 +136,6 @@ const ContactSection = () => {
           >
             Let's Work Together
           </h2>
-          {/* <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto"> */}
           <p
             className={cn(
               "text-lg transition-colors duration-300 mb-8 max-w-2xl mx-auto",
@@ -59,8 +162,13 @@ const ContactSection = () => {
             >
               Get in Touch
             </h3>
-            <form onSubmit={handleContactSubmit} className="space-y-6">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6"
+              noValidate
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Name Field */}
                 <div className="space-y-2">
                   <label
                     htmlFor="name"
@@ -71,20 +179,23 @@ const ContactSection = () => {
                         : "text-slate-700"
                     )}
                   >
-                    Name
+                    Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     id="name"
                     type="text"
-                    required
-                    className={cn(
-                      "w-full px-4 py-2 rounded-md border transition-colors duration-300 focus:outline-0",
-                      actualTheme === "dark"
-                        ? "bg-slate-700 border-slate-600 text-white focus:border-blue-500 focus:ring-blue-500"
-                        : "bg-white border-slate-500 text-slate-700 focus:border-blue-400 focus:ring-blue-400"
-                    )}
+                    {...register("name")}
+                    className={getInputClasses(!!errors.name)}
+                    placeholder="Your full name"
                   />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
+
+                {/* Email Field */}
                 <div className="space-y-2">
                   <label
                     htmlFor="email"
@@ -95,21 +206,24 @@ const ContactSection = () => {
                         : "text-slate-700"
                     )}
                   >
-                    Email
+                    Email <span className="text-red-500">*</span>
                   </label>
                   <input
                     id="email"
                     type="email"
-                    required
-                    className={cn(
-                      "w-full px-4 py-2 rounded-md border transition-colors duration-300 focus:outline-0",
-                      actualTheme === "dark"
-                        ? "bg-slate-700 border-slate-600 text-white focus:border-blue-500 focus:ring-blue-500"
-                        : "bg-white border-slate-500 text-slate-700 focus:border-blue-400 focus:ring-blue-400"
-                    )}
+                    {...register("email")}
+                    className={getInputClasses(!!errors.email)}
+                    placeholder="your.email@example.com"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
+
+              {/* Subject Field */}
               <div className="space-y-2">
                 <label
                   htmlFor="subject"
@@ -118,20 +232,35 @@ const ContactSection = () => {
                     actualTheme === "dark" ? "text-slate-300" : "text-slate-700"
                   )}
                 >
-                  Subject
+                  Subject <span className="text-red-500">*</span>
                 </label>
                 <input
                   id="subject"
                   type="text"
-                  required
-                  className={cn(
-                    "w-full px-4 py-2 rounded-md border transition-colors duration-300 focus:outline-0",
-                    actualTheme === "dark"
-                      ? "bg-slate-700 border-slate-600 text-white focus:border-blue-500 focus:ring-blue-500"
-                      : "bg-white border-slate-500 text-slate-700 focus:border-blue-400 focus:ring-blue-400"
-                  )}
+                  {...register("subject")}
+                  className={getInputClasses(!!errors.subject)}
+                  placeholder="What would you like to discuss?"
                 />
+                <div className="flex justify-between items-center">
+                  {errors.subject && (
+                    <p className="text-red-500 text-sm">
+                      {errors.subject.message}
+                    </p>
+                  )}
+                  <span
+                    className={cn(
+                      "text-xs",
+                      actualTheme === "dark"
+                        ? "text-slate-400"
+                        : "text-slate-500"
+                    )}
+                  >
+                    {subjectValue?.length || 0}/100
+                  </span>
+                </div>
               </div>
+
+              {/* Message Field */}
               <div className="space-y-2">
                 <label
                   htmlFor="message"
@@ -140,32 +269,90 @@ const ContactSection = () => {
                     actualTheme === "dark" ? "text-slate-300" : "text-slate-700"
                   )}
                 >
-                  Message
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="message"
                   rows={5}
-                  required
-                  className={cn(
-                    "w-full px-4 py-2 rounded-md border transition-colors duration-300 focus:outline-0",
-                    actualTheme === "dark"
-                      ? "bg-slate-700 border-slate-600 text-white focus:border-blue-500 focus:ring-blue-500"
-                      : "bg-white border-slate-500 text-slate-700 focus:border-blue-400 focus:ring-blue-400"
+                  {...register("message")}
+                  className={getInputClasses(!!errors.message)}
+                  placeholder="Tell me about your project, ideas, or how I can help you..."
+                />
+                <div className="flex justify-between items-center">
+                  {errors.message ? (
+                    <p className="text-red-500 text-sm">
+                      {errors.message.message}
+                    </p>
+                  ) : (
+                    <div></div>
                   )}
-                ></textarea>
+                  <span
+                    className={cn(
+                      "text-xs",
+                      actualTheme === "dark"
+                        ? "text-slate-400"
+                        : "text-slate-500"
+                    )}
+                  >
+                    {messageValue?.length || 0}/1000
+                  </span>
+                </div>
               </div>
+
+              {/* Submit Button */}
               <Button
                 type="submit"
+                disabled={isPending || !isValid || !isDirty}
                 className={cn(
-                  "w-full bg-blue-600 hover:bg-blue-700",
+                  "w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed",
                   actualTheme === "dark" ? "text-slate-900" : "text-slate-50"
                 )}
               >
-                Send Message
+                {isPending ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Sending emails...
+                  </div>
+                ) : (
+                  "Send Message"
+                )}
               </Button>
+
+              {!isValid && isDirty && (
+                <p className="text-sm text-center text-amber-600">
+                  Please fix the errors above to send your message
+                </p>
+              )}
+
+              {/* ADDED: Email Status Indicators */}
+              {isPending && (
+                <div className="text-sm text-center space-y-1">
+                  <p
+                    className={cn(
+                      "transition-colors duration-300",
+                      actualTheme === "dark"
+                        ? "text-slate-400"
+                        : "text-slate-600"
+                    )}
+                  >
+                    📧 Sending confirmation email to you...
+                  </p>
+                  <p
+                    className={cn(
+                      "transition-colors duration-300",
+                      actualTheme === "dark"
+                        ? "text-slate-400"
+                        : "text-slate-600"
+                    )}
+                  >
+                    🔔 Sending notification email to me...
+                  </p>
+                </div>
+              )}
             </form>
           </div>
 
+          {/* Contact Information Section - Unchanged */}
           <div className="flex flex-col justify-between">
             <div>
               <h3
