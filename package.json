@@ -4,10 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "tsc",
-    "start": "node dist/server/index.js",
-    "dev:server": "nodemon --watch server --ext ts --exec \"tsx server/index.ts\""
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "dev:server": "nodemon --watch server --ext ts --exec \"tsx server/index.ts\"",
+    "dev:vercel": "vercel dev"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -25,7 +27,6 @@
     "express": "^5.1.0",
     "lucide-react": "^0.511.0",
     "node-fetch": "^3.3.2",
-    "path": "^0.12.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1",
@@ -53,9 +54,11 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.0.0",
+    "nodemon": "^3.0.0",
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8",
     "ts-node": "^10.9.2",
+    "tsx": "^4.0.0",
     "tw-animate-css": "^1.3.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
