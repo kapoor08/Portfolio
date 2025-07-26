@@ -3,7 +3,6 @@ import { corsMiddleware } from "./middleware/cors.js";
 import { mediumRoutes } from "./routes/medium.routes.js";
 
 const app = express();
-const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(corsMiddleware);
@@ -21,10 +20,14 @@ app.get("/health", (req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📝 Available endpoints:`);
-  console.log(`   - GET /api/medium`);
-  console.log(`   - GET /health`);
-});
+// For Vercel deployment
+if (process.env.NODE_ENV === "development") {
+  // Start server locally
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+}
+
+// Export the Express app for Vercel or other platforms
+export default app;
