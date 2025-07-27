@@ -86,13 +86,13 @@ function TabsSection({ tabs, data, type }: TabsSectionProps) {
         <TabsList
           className={cn(
             "transition-colors duration-300",
-            actualTheme === "dark"
+            actualTheme === "dark" || actualTheme === "system"
               ? type === "bars"
-                ? "bg-slate-800"
-                : "bg-slate-700"
+                ? "!bg-slate-800"
+                : "!bg-slate-700"
               : type === "bars"
-              ? "bg-slate-300"
-              : "bg-slate-200"
+              ? "!bg-slate-300"
+              : "!bg-slate-200"
           )}
         >
           {tabs.map(({ value, label }) => (
