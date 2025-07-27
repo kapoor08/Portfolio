@@ -37,7 +37,6 @@ const FeaturedProjectSection = () => {
           ]}
           data={projects}
           type="cards"
-          filterBy="category"
         />
       </div>
     </section>

@@ -37,7 +37,6 @@ const SkillsSection = () => {
           ]}
           data={skills}
           type="bars"
-          filterBy="category"
         />
       </div>
     </section>
