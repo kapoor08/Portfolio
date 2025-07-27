@@ -1,8 +1,10 @@
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { useTheme } from "@/provider/theme-provider";
 import { AMO } from "@/core";
+import { ArrowRight } from "lucide-react";
+import { AppButton } from "@/shared/elements";
+import { SectionHeader } from "@/shared/base";
 
 const LatestArticlesSection = () => {
   const { actualTheme } = useTheme();
@@ -17,24 +19,18 @@ const LatestArticlesSection = () => {
       )}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2
-            className={cn(
-              "text-4xl font-bold mb-4 transition-colors duration-300",
-              actualTheme === "dark" ? "text-white" : "text-slate-800"
-            )}
-          >
-            Latest Articles
-          </h2>
-          <p
-            className={cn(
-              "text-lg transition-colors duration-300",
-              actualTheme === "dark" ? "text-slate-300" : "text-slate-600"
-            )}
-          >
-            Thoughts, tutorials, and insights about web development
-          </p>
-        </div>
+        <SectionHeader
+          title="Latest Articles"
+          titleClassName={cn(
+            "text-4xl font-bold mb-4 transition-colors duration-300",
+            actualTheme === "dark" ? "text-white" : "text-slate-800"
+          )}
+          subtitle="Thoughts, tutorials, and insights about web development"
+          subtitleClassName={cn(
+            "text-lg transition-colors duration-300",
+            actualTheme === "dark" ? "text-slate-300" : "text-slate-600"
+          )}
+        />
 
         <div className="grid md:grid-cols-3 gap-8">
           {data?.data?.map((post, index) => (
@@ -82,32 +78,20 @@ const LatestArticlesSection = () => {
                 >
                   {post.description}
                 </p>
-                <Button
+                <AppButton
                   variant="link"
                   className={cn(
-                    "p-0 h-auto transition-colors duration-300 cursor-pointer",
+                    "p-0 h-auto transition-colors duration-300 cursor-pointer bg-transparent text-sm",
                     actualTheme === "dark"
                       ? "text-blue-400 hover:text-blue-300"
                       : "text-blue-600 hover:text-blue-800"
                   )}
                   onClick={() => window.open(post.link, "_blank")}
+                  icon={<ArrowRight />}
+                  iconPosition="right"
                 >
                   Read More
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="ml-1 h-4 w-4"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Button>
+                </AppButton>
               </CardContent>
             </Card>
           ))}

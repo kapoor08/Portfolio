@@ -1,4 +1,42 @@
+import { Code, Github, Linkedin, Mail, Palette, Server } from "lucide-react";
+
 const menuOptions = ["home", "about", "skills", "projects", "blog", "contact"];
+
+const socialLinks = [
+  { name: "GitHub", url: "", icon: Github },
+  { name: "LinkedIn", url: "", icon: Linkedin },
+  { name: "Email", url: "mailto:lakshahykapoor08@gmail.com", icon: Mail },
+];
+
+const skillsCards = [
+  {
+    title: "Frontend Development",
+    icon: Code,
+    description: "React, Next.js, TypeScript, Tailwind CSS",
+    color: {
+      light: "bg-blue-100 text-blue-600",
+      dark: "bg-slate-600 text-blue-400",
+    },
+  },
+  {
+    title: "Backend Development",
+    icon: Server,
+    description: "Node.js, PostgreSQL, MongoDB, REST APIs",
+    color: {
+      light: "bg-green-100 text-green-600",
+      dark: "bg-slate-600 text-green-400",
+    },
+  },
+  {
+    title: "UI/UX Design",
+    icon: Palette,
+    description: "Figma, Adobe XD, Responsive Design",
+    color: {
+      light: "bg-purple-100 text-purple-600",
+      dark: "bg-slate-600 text-purple-400",
+    },
+  },
+];
 
 const projects = [
   {
@@ -82,4 +120,4 @@ const skills = [
   { name: "TypeScript", level: 85, category: "language" },
 ];
 
-export { menuOptions, projects, skills };
+export { menuOptions, socialLinks, skillsCards, projects, skills };

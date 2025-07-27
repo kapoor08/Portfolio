@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/provider/theme-provider";
-import { Button } from "../ui/button";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { menuOptions } from "@/data";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 import { useMobileMenu } from "@/hooks/use-mobile-menu";
+import { AppButton } from "@/shared/elements";
 
 const Navigation = () => {
   const { actualTheme, theme, toggleTheme } = useTheme();
@@ -53,7 +53,7 @@ const Navigation = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Button
+            <AppButton
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
@@ -70,45 +70,47 @@ const Navigation = () => {
                   ? "dark"
                   : "light"
               } theme`}
-            >
-              {theme === "dark" ? (
-                <Moon className="h-5 w-5" />
-              ) : theme === "light" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Monitor className="h-5 w-5" />
-              )}
-            </Button>
+              icon={
+                theme === "dark" ? (
+                  <Moon className="h-5 w-5" />
+                ) : theme === "light" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Monitor className="h-5 w-5" />
+                )
+              }
+            />
 
-            <Button
+            <AppButton
               variant="ghost"
               size="icon"
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                {mobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                )}
-              </svg>
-            </Button>
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  {mobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  )}
+                </svg>
+              }
+            />
           </div>
         </div>
       </div>

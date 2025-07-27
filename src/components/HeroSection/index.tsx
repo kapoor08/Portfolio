@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/provider/theme-provider";
-import { Button } from "../ui/button";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Download, Mail } from "lucide-react";
+import { AppButton } from "@/shared/elements";
+import { socialLinks } from "@/data";
 
 const HeroSection = () => {
   const { actualTheme } = useTheme();
@@ -42,67 +43,48 @@ const HeroSection = () => {
             </span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeIn animation-delay-400">
-            <Button
+            <AppButton
               size="lg"
               className={cn(
-                "transition-all duration-300 text-white hover:cursor-pointer",
+                "transition-all duration-300 text-white hover:cursor-pointer text-sm",
                 actualTheme === "dark"
                   ? "bg-blue-600 hover:bg-blue-700"
                   : "bg-slate-800 hover:bg-slate-700"
               )}
+              icon={<Download className="mr-2 h-4 w-4" />}
             >
-              <Download className="mr-2 h-4 w-4" />
               Download Resume
-            </Button>
-            <Button
+            </AppButton>
+            <AppButton
               variant="outline"
               size="lg"
               className={cn(
-                "transition-all duration-300 hover:cursor-pointer",
+                "transition-all duration-300 hover:cursor-pointer text-sm",
                 actualTheme === "dark"
                   ? "border-slate-600 text-white hover:bg-slate-800"
                   : ""
               )}
+              icon={<Mail className="mr-2 h-4 w-4" />}
             >
-              <Mail className="mr-2 h-4 w-4" />
               Get In Touch
-            </Button>
+            </AppButton>
           </div>
 
           <div className="mt-12 flex justify-center space-x-4 animate-fadeIn animation-delay-600">
-            <a
-              href="#"
-              className={cn(
-                "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md",
-                actualTheme === "dark"
-                  ? "bg-slate-800 text-white hover:bg-slate-700"
-                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
-              )}
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              className={cn(
-                "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md",
-                actualTheme === "dark"
-                  ? "bg-slate-800 text-white hover:bg-slate-700"
-                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
-              )}
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              className={cn(
-                "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md",
-                actualTheme === "dark"
-                  ? "bg-slate-800 text-white hover:bg-slate-700"
-                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
-              )}
-            >
-              <Mail className="h-5 w-5" />
-            </a>
+            {socialLinks.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                className={cn(
+                  "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md",
+                  actualTheme === "dark"
+                    ? "bg-slate-800 text-white hover:bg-slate-700"
+                    : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                )}
+              >
+                <link.icon className="h-5 w-5" />
+              </a>
+            ))}
           </div>
 
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
@@ -114,19 +96,7 @@ const HeroSection = () => {
               )}
             >
               <span className="text-sm mb-2">Scroll Down</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 5v14M19 12l-7 7-7-7" />
-              </svg>
+              <ArrowDown />
             </a>
           </div>
         </div>
