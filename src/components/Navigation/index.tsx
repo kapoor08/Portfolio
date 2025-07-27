@@ -58,10 +58,10 @@ const Navigation = () => {
               size="icon"
               onClick={toggleTheme}
               className={cn(
-                "rounded-full transition-colors",
+                "rounded-full transition-colors duration-300 cursor-pointer",
                 actualTheme === "dark"
-                  ? "text-white hover:text-white hover:bg-slate-700"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-200"
+                  ? "text-white bg-slate-700 hover:bg-slate-700"
+                  : "text-slate-600 bg-slate-100 hover:bg-slate-200"
               )}
               title={`Switch to ${
                 theme === "dark"

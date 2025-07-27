@@ -5,7 +5,7 @@ type Theme = "light" | "dark" | "system";
 interface ThemeContextProps {
   theme: Theme;
   toggleTheme: () => void;
-  actualTheme: "light" | "dark";
+  actualTheme: "light" | "dark" | "system";
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
