@@ -22,7 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await resend.emails.send({
       // Switch from address to "Portfolio Contact <hello@lakshaykapoor.in>" once
       // lakshaykapoor.in is verified in your Resend dashboard
-      from: "Portfolio Contact <onboarding@resend.dev>",
+      from: "Portfolio Contact <hello@lakshaykapoor.in>",
       to: "hello@lakshaykapoor.in",
       replyTo: email,
       subject: `New message from ${name}`,
