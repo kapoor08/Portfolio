@@ -1,9 +1,34 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import SEO from "@/components/seo/SEO";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Engineering Projects by Lakshay Kapoor",
+  "description": "Selected engineering projects and technical case studies by Lakshay Kapoor.",
+  "url": "https://lakshaykapoor.in/work",
+  "itemListElement": projects.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "CreativeWork",
+      "name": p.title,
+      "description": p.overview,
+      "author": { "@type": "Person", "name": "Lakshay Kapoor" },
+    },
+  })),
+};
 
 const Work = () => (
   <Layout>
+    <SEO
+      title="Work"
+      description="Engineering case studies by Lakshay Kapoor — distributed payment systems, real-time analytics, and multi-tenant SaaS platforms."
+      canonical="/work"
+      jsonLd={jsonLd}
+    />
     <div className="section-container py-28 md:py-36">
       <h1 className="text-4xl md:text-5xl font-semibold text-foreground fade-up">
         Work

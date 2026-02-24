@@ -1,8 +1,24 @@
 import Layout from "@/components/layout/Layout";
 import { categories } from "@/data/toolkit";
+import SEO from "@/components/seo/SEO";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://lakshaykapoor.in/toolkit",
+  "name": "Engineering Toolkit — Lakshay Kapoor",
+  "description": "Technologies and tools used by Lakshay Kapoor across engineering projects — React, Node.js, PostgreSQL, AWS, Docker, and more.",
+  "author": { "@type": "Person", "name": "Lakshay Kapoor" },
+};
 
 const Toolkit = () => (
   <Layout>
+    <SEO
+      title="Toolkit"
+      description="Technologies used by Lakshay Kapoor — React, Next.js, Node.js, FastAPI, PostgreSQL, Redis, AWS, Docker, Terraform and more."
+      canonical="/toolkit"
+      jsonLd={jsonLd}
+    />
     <div className="section-container py-28 md:py-36">
       <h1 className="text-4xl md:text-5xl font-semibold text-foreground fade-up">
         Toolkit

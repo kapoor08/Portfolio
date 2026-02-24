@@ -64,7 +64,7 @@ const Navbar = () => {
             </Link>
           ))}
           <a
-            href="/Lakshay%20Kapoor's%20Resume.pdf"
+            href="/Lakshay_Kapoor's_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm border border-border text-muted-foreground px-4 py-1.5 rounded-sm hover:text-foreground hover:border-muted-foreground transition-colors duration-200"

@@ -1,5 +1,20 @@
 import Layout from "@/components/layout/Layout";
 import { useState } from "react";
+import SEO from "@/components/seo/SEO";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "https://lakshaykapoor.in/contact",
+  "name": "Contact Lakshay Kapoor",
+  "description": "Get in touch with Lakshay Kapoor for engineering projects, system design, and technical collaborations.",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Lakshay Kapoor",
+    "email": "hello@lakshaykapoor.in",
+    "url": "https://lakshaykapoor.in",
+  },
+};
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -29,6 +44,12 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Contact"
+        description="Have a project or idea? Get in touch with Lakshay Kapoor for engineering projects, system design, and technical collaborations."
+        canonical="/contact"
+        jsonLd={jsonLd}
+      />
       <div className="section-container py-28 md:py-36">
         <div className="max-w-lg">
           <h1 className="text-4xl md:text-5xl font-semibold text-foreground leading-tight fade-up">

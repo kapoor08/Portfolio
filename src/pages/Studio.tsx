@@ -1,8 +1,29 @@
 import Layout from "@/components/layout/Layout";
 import { principles } from "@/data/studio";
+import SEO from "@/components/seo/SEO";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "url": "https://lakshaykapoor.in/studio",
+  "name": "About the Studio — Lakshay Kapoor",
+  "description": "A one-person engineering practice focused on building clean, performant, and scalable systems.",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://lakshaykapoor.in/#person",
+    "name": "Lakshay Kapoor",
+    "jobTitle": "Full Stack Engineer",
+  },
+};
 
 const Studio = () => (
   <Layout>
+    <SEO
+      title="Studio"
+      description="A one-person engineering practice focused on building clean, performant, and scalable systems. Learn about Lakshay Kapoor's philosophy and approach."
+      canonical="/studio"
+      jsonLd={jsonLd}
+    />
     <div className="section-container py-28 md:py-36">
       <h1 className="text-4xl md:text-5xl font-semibold text-foreground fade-up">
         About the Studio
