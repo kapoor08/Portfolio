@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build && npm run prerender",
     "check:prerender": "tsx scripts/check-prerender.ts",
     "lint": "eslint .",
-    "prerender": "tsx scripts/prerender.tsx",
+    "prerender": "tsx --tsconfig tsconfig.prerender.json scripts/prerender.tsx",
     "preview": "vite preview"
   },
   "dependencies": {
