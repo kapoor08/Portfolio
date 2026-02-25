@@ -2,13 +2,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
-import * as ReactHelmetAsync from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import AppRoutes from "./AppRoutes";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <ReactHelmetAsync.HelmetProvider>
+  <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         {typeof window !== "undefined" && <Sonner />}
@@ -17,7 +17,7 @@ const App = () => (
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
-  </ReactHelmetAsync.HelmetProvider>
+  </HelmetProvider>
 );
 
 export default App;

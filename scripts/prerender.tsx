@@ -2,12 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import React from "react";
 import { renderToString } from "react-dom/server";
-import HelmetAsync from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import { StaticRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AppRoutes from "../src/AppRoutes";
-
-const { HelmetProvider } = HelmetAsync as any;
 
 const routes = ["/", "/work", "/studio", "/toolkit", "/contact"];
 
