@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import React from "react";
 import { renderToString } from "react-dom/server";
-import * as ReactHelmetAsync from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import { StaticRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AppRoutes from "../src/AppRoutes";
@@ -23,13 +23,13 @@ const renderRoute = (route: string) => {
   const queryClient = new QueryClient();
 
   const app = (
-    <ReactHelmetAsync.HelmetProvider context={helmetContext}>
+    <HelmetProvider context={helmetContext}>
       <QueryClientProvider client={queryClient}>
         <StaticRouter location={route}>
           <AppRoutes />
         </StaticRouter>
       </QueryClientProvider>
-    </ReactHelmetAsync.HelmetProvider>
+    </HelmetProvider>
   );
 
   const appHtml = renderToString(app);
