@@ -1,4 +1,6 @@
-import { Helmet } from "react-helmet-async";
+import ReactHelmetAsync from "react-helmet-async";
+
+const { Helmet } = ReactHelmetAsync;
 
 const BASE_URL = "https://lakshaykapoor.in";
 const DEFAULT_TITLE = "Lakshay Kapoor — Full Stack Engineer";
