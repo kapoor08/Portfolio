@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run prerender",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx && npm run prerender",
     "check:prerender": "tsx scripts/check-prerender.ts",
     "lint": "eslint .",
-    "prerender": "tsx --tsconfig tsconfig.prerender.json scripts/prerender.tsx",
+    "prerender": "node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -17,4 +17,9 @@ export default defineConfig(() => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  ssr: {
+    // react-helmet-async's ESM file is not resolvable by Node.js v24's ESM loader.
+    // Bundling it into the SSR output lets Rollup handle the interop (same as client build).
+    noExternal: ["react-helmet-async"],
+  },
 }));
