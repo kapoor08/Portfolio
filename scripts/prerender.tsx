@@ -43,7 +43,7 @@ const renderRoute = (route: string) => {
   ].join("");
 
   return template
-    .replace("<div id=\"root\"></div>", `<div id="root">${appHtml}</div>`)
+    .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
     .replace("</head>", `${headTags}</head>`);
 };
 
