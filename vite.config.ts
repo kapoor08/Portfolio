@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig(() => ({
+export default defineConfig((env) => ({
   server: {
     host: "::",
     hmr: {
@@ -16,6 +16,10 @@ export default defineConfig(() => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    // Don't wipe dist/ on the SSR build — the client build already populated it.
+    emptyOutDir: !env.isSsrBuild,
   },
   ssr: {
     // react-helmet-async's ESM file is not resolvable by Node.js v24's ESM loader.
