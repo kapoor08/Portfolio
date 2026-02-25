@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run prerender",
+    "check:prerender": "tsx scripts/check-prerender.ts",
     "lint": "eslint .",
+    "prerender": "tsx scripts/prerender.ts",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -52,6 +54,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "tsx": "^4.21.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.36.0",
     "vite": "^7.3.1"
