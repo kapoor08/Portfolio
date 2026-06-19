@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 
 const BASE_URL = "https://lakshaykapoor.in";
-const DEFAULT_TITLE = "Lakshay Kapoor — Full Stack Engineer";
+const DEFAULT_TITLE = "Lakshay Kapoor - Full Stack Developer";
 const DEFAULT_DESCRIPTION =
-  "Full Stack Engineer building scalable systems from architecture to deployment. Specialized in React, Node.js, PostgreSQL, and AWS.";
+  "Full Stack Developer with 3+ years of experience building web, mobile, desktop, SaaS, real-time, and AI-powered applications.";
 const DEFAULT_OG_IMAGE = "/og.png";
 const DEFAULT_TWITTER_CARD = "summary_large_image";
 const DEFAULT_TWITTER_SITE = "@lakshaykapoor";

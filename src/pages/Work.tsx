@@ -6,8 +6,8 @@ import SEO from "@/components/seo/SEO";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Engineering Projects by Lakshay Kapoor",
-  "description": "Selected engineering projects and technical case studies by Lakshay Kapoor.",
+  "name": "Product Engineering Work by Lakshay Kapoor",
+  "description": "Selected full-stack, SaaS, real-time, healthcare, reservation, and AI product work by Lakshay Kapoor.",
   "url": "https://lakshaykapoor.in/work",
   "itemListElement": projects.map((p, i) => ({
     "@type": "ListItem",
@@ -25,7 +25,7 @@ const Work = () => (
   <Layout>
     <SEO
       title="Work"
-      description="Engineering case studies by Lakshay Kapoor — distributed payment systems, real-time analytics, and multi-tenant SaaS platforms."
+      description="Selected product engineering work by Lakshay Kapoor across UCaaS, reservations, healthcare, AI tooling, SaaS platforms, payments, and real-time applications."
       canonical="/work"
       jsonLd={jsonLd}
     />
@@ -34,7 +34,7 @@ const Work = () => (
         Work
       </h1>
       <p className="text-base text-muted-foreground/80 mt-4 max-w-lg fade-up stagger-1">
-        Selected projects. Each structured as a technical case study.
+        Selected product work, written as concise technical case studies.
       </p>
 
       <div className="mt-24 space-y-0">
@@ -122,7 +122,7 @@ const Work = () => (
           to="/contact"
           className="inline-block text-sm accent-link accent-underline"
         >
-          Have a project in mind? Let's talk →
+          Have a project in mind? Let's talk &rarr;
         </Link>
       </div>
     </div>

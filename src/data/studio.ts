@@ -2,19 +2,19 @@ import type { Principle } from "@/types";
 
 export const principles: Principle[] = [
   {
-    title: "Simplicity scales",
-    desc: "Clean abstractions and minimal dependencies reduce cognitive load and enable teams to move faster.",
+    title: "Build around the workflow",
+    desc: "The strongest product work starts with how people actually operate: venue staff managing bookings, admins handling credentials, patients moving through care, or analysts validating data.",
   },
   {
-    title: "Performance is a feature",
-    desc: "Every millisecond matters. Profiling, optimization, and efficient data access patterns are built into the process.",
+    title: "Keep complexity visible",
+    desc: "Complex domains need clear state, explicit rules, review steps, audit trails, and safe defaults. I prefer systems that make important decisions easy to inspect.",
   },
   {
-    title: "Infrastructure matters",
-    desc: "Reliable deployment pipelines, monitoring, and automated scaling are not afterthoughts — they're foundations.",
+    title: "Ship the whole feature",
+    desc: "A polished feature is more than UI. It includes APIs, validation, auth, empty states, loading behavior, responsive layouts, emails, deployment, and the edge cases users eventually hit.",
   },
   {
-    title: "Design supports usability",
-    desc: "Interface decisions are driven by user needs, accessibility standards, and measurable outcomes.",
+    title: "Use AI where it earns trust",
+    desc: "AI features should be grounded in real data, explain their sources where needed, protect risky operations, and keep a human review path for business-critical workflows.",
   },
 ];

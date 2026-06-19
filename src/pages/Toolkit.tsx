@@ -6,8 +6,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "url": "https://lakshaykapoor.in/toolkit",
-  "name": "Engineering Toolkit — Lakshay Kapoor",
-  "description": "Technologies and tools used by Lakshay Kapoor across engineering projects — React, Node.js, PostgreSQL, AWS, Docker, and more.",
+  "name": "Engineering Toolkit - Lakshay Kapoor",
+  "description": "Technologies used by Lakshay Kapoor across frontend, backend, SaaS, AI, real-time, testing, and deployment work.",
   "author": { "@type": "Person", "name": "Lakshay Kapoor" },
 };
 
@@ -15,7 +15,7 @@ const Toolkit = () => (
   <Layout>
     <SEO
       title="Toolkit"
-      description="Technologies used by Lakshay Kapoor — React, Next.js, Node.js, FastAPI, PostgreSQL, Redis, AWS, Docker, Terraform and more."
+      description="Technologies used by Lakshay Kapoor across React, Next.js, Angular, TypeScript, Node.js, FastAPI, PostgreSQL, MongoDB, Stripe, Socket.IO, LangChain, LangGraph, and Playwright."
       canonical="/toolkit"
       jsonLd={jsonLd}
     />
@@ -24,7 +24,8 @@ const Toolkit = () => (
         Toolkit
       </h1>
       <p className="text-base text-muted-foreground/80 mt-4 max-w-lg fade-up stagger-1">
-        Technologies and tools used across projects.
+        Technologies I use across product builds, integrations, and production
+        workflows.
       </p>
 
       <div className="mt-24 space-y-0">

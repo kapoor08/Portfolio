@@ -3,68 +3,134 @@ import type { Project } from "@/types";
 export const projects: Project[] = [
   {
     num: "01",
-    title: "Distributed Payment Gateway",
+    title: "ConnexioCloud",
     description:
-      "End-to-end payment processing system handling 50K+ daily transactions with sub-200ms latency.",
+      "UCaaS and customer engagement platform work across dashboards, embedded communication widgets, support tooling, and video calling.",
     overview:
-      "End-to-end payment processing system designed for high throughput and reliability.",
-    impact: "99.97% uptime · 40% latency reduction",
-    role: "Lead Engineer",
-    duration: "6 months",
+      "Unified communications platform combining customer engagement, workforce tools, embedded calling, and support automation.",
+    impact: "Embedded webphone - AI help chat - video calling",
+    role: "Full Stack Developer",
+    duration: "Product engagement",
     problem:
-      "Legacy payment system couldn't handle growing transaction volume, causing timeouts and failed payments during peak hours.",
+      "Admins, agents, and external partners needed faster access to daily workflows, better self-serve support, and communication tools that could work both inside and outside the main platform.",
     solution:
-      "Designed a distributed architecture with event sourcing, implementing idempotent payment processing with automatic retry mechanisms and circuit breakers.",
+      "Built customizable dashboards with drag-and-drop widgets and quick links, integrated AI-powered help chat and contextual Intercom triggers, shipped an isolated embeddable webphone, and helped extend the telephony widget with bidirectional video calling.",
     results: [
-      "99.97% uptime",
-      "40% latency reduction",
-      "50K+ daily transactions",
-      "Zero double-charge incidents",
+      "Personalized admin and agent dashboards",
+      "Lower support friction through in-app AI assistance",
+      "Embeddable communication widget for external sites and CRMs",
+      "Video calling support inside a compact telephony widget",
     ],
-    stack: ["Node.js", "PostgreSQL", "Redis", "AWS Lambda", "SQS"],
+    stack: ["React", "TypeScript", "Socket.IO", "AI Integration", "Intercom"],
   },
   {
     num: "02",
-    title: "Real-Time Analytics Platform",
+    title: "TheList",
     description:
-      "Event-driven analytics dashboard processing millions of data points with live streaming updates.",
+      "Lifestyle reservation platform for restaurants, beach venues, nightclubs, and partner operations across premium destinations.",
     overview:
-      "Event-driven analytics dashboard with live streaming and complex aggregations.",
-    impact: "3M+ events/day · Real-time processing",
-    role: "Full Stack Engineer",
-    duration: "4 months",
+      "Reservation and venue-management platform with interactive floorplans, CRM workflows, booking metrics, and direct booking flows.",
+    impact: "Floorplans - CRM - real-time booking metrics",
+    role: "Full Stack Developer",
+    duration: "Product engagement",
     problem:
-      "Business teams lacked real-time visibility into user behavior, relying on delayed batch reports that were 24 hours behind.",
+      "Venue teams needed accurate seating control, responsive reservation management, and a smoother customer-facing booking flow across desktop and mobile contexts.",
     solution:
-      "Built a streaming pipeline with Kafka for event ingestion, ClickHouse for real-time OLAP queries, and a React dashboard with WebSocket-powered live updates.",
+      "Developed visual floorplan tooling with zone and seat configuration, built responsive CRM reservation views, added daily booking and guest metrics, optimized the direct booking flow for single-option scenarios, and supported rotated seat rendering for real-world layouts.",
     results: [
-      "3M+ events processed daily",
-      "Sub-second query response",
-      "Real-time dashboards",
-      "80% faster decision-making",
+      "Interactive venue floorplan setup",
+      "Dedicated mobile and desktop CRM reservation experiences",
+      "Live booking and guest status summaries",
+      "Reduced friction in customer booking flows",
     ],
-    stack: ["React", "FastAPI", "ClickHouse", "Kafka", "WebSocket"],
+    stack: ["React", "TypeScript", "Responsive UI", "Payments", "Real-Time Data"],
   },
   {
     num: "03",
-    title: "Multi-Tenant SaaS Platform",
+    title: "Invent Health AI Tools",
     description:
-      "Scalable multi-tenant architecture serving 200+ organizations with isolated data and custom configurations.",
+      "AI-assisted internal tooling for healthcare data teams working with Databricks pipelines, reports, validation, and mapping workflows.",
     overview:
-      "Scalable multi-tenant architecture with data isolation and per-tenant customization.",
-    impact: "200+ tenants · 60% cost reduction",
-    role: "Architect & Lead Engineer",
-    duration: "8 months",
+      "Agentic tools that help engineers and analysts query code/data knowledge, validate migrations, generate reports, and automate file mapping.",
+    impact: "RAG - Databricks - validation automation",
+    role: "Full Stack & AI Developer",
+    duration: "Internal tooling",
     problem:
-      "Single-tenant deployment model required separate infrastructure per client, driving costs up linearly with each new customer.",
+      "Healthcare data workflows depended on repository knowledge, SQL expertise, manual migration checks, and repeated configuration work spread across multiple codebases and Databricks tables.",
     solution:
-      "Implemented row-level security with tenant-scoped database schemas, centralized configuration management, and tenant-aware caching to serve 200+ organizations on shared infrastructure.",
+      "Built natural-language tooling backed by repository ingestion, RAG, SQL safety checks, tool registries, validation engines, report generation, and editable AI-assisted mapping flows for client file onboarding.",
     results: [
-      "200+ tenants on shared infra",
-      "60% infrastructure cost reduction",
-      "99.9% SLA maintained",
-      "Onboarding reduced to hours",
+      "Self-serve codebase and data Q&A",
+      "Automated Prod vs UAT validation support",
+      "Excel report generation from natural-language requests",
+      "Faster file mapping with human review before writes",
     ],
-    stack: ["Next.js", "Node.js", "PostgreSQL", "Docker", "Terraform"],
+    stack: ["FastAPI", "LangChain", "LangGraph", "Databricks", "ChromaDB"],
+  },
+  {
+    num: "04",
+    title: "PropFirm Genie",
+    description:
+      "Prop trading operations platform features for reward marketplaces, credential handling, email templates, and CMS-driven content.",
+    overview:
+      "Admin-heavy product modules for purchases, reward inventory, credential assignment, transactional emails, and editable marketing content.",
+    impact: "RBAC - credential pools - CMS workflows",
+    role: "Full Stack Developer",
+    duration: "Product engagement",
+    problem:
+      "Admins needed controlled ways to manage rewards, inventory, purchases, credentials, transactional email templates, and public-site content without relying on engineering for every update.",
+    solution:
+      "Implemented reward purchase flows, credential pool management, inventory tracking, admin activity visibility, a dynamic email template system, global email settings, and CMS controls for navigation, footer, and deal sections.",
+    results: [
+      "Role-gated admin workflows",
+      "Automated credential assignment rules",
+      "Reusable transactional email templates",
+      "CMS-managed public content sections",
+    ],
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "RBAC", "Email Services"],
+  },
+  {
+    num: "05",
+    title: "NavioMD",
+    description:
+      "Telehealth platform work across guided medical intake, eligibility screening, subscriptions, virtual visits, and patient dashboards.",
+    overview:
+      "Patient-facing healthcare experience combining CMS-managed questionnaires, subscription billing, provider visits, and treatment routing.",
+    impact: "Medical intake - Stripe - virtual visits",
+    role: "Full Stack Developer",
+    duration: "Product engagement",
+    problem:
+      "The patient journey needed to collect sensitive medical context, enforce disqualification rules, route users to the right treatment path, and support both subscription and one-off consultation flows.",
+    solution:
+      "Built multi-step questionnaire logic, integrated CMS-managed questions and product routing, handled subscription and paid visit paths through Stripe, and connected virtual consultation flows with the Qualify API.",
+    results: [
+      "Guided medical questionnaire experience",
+      "Rules-based eligibility screening",
+      "Subscription and one-off visit payment paths",
+      "Patient dashboard and consultation access flows",
+    ],
+    stack: ["Next.js", "Stripe", "Sanity CMS", "API Integration", "Auth"],
+  },
+  {
+    num: "06",
+    title: "ClientFlow",
+    description:
+      "Production-grade multi-tenant SaaS platform with tenant isolation, billing, notifications, client portals, and operational tooling.",
+    overview:
+      "Full-stack SaaS system designed around organizations, projects, tasks, invoices, notifications, audit logs, and secure client collaboration.",
+    impact: "Multi-tenant SaaS - billing - observability",
+    role: "Full Stack Developer",
+    duration: "Product build",
+    problem:
+      "The product needed to go beyond a demo and behave like a real SaaS platform, with strict tenant boundaries, subscription monetization, secure access, notifications, and operational readiness.",
+    solution:
+      "Built tenant-scoped data models and service flows, RBAC, API keys, billing and invoices, webhooks, SSE notifications, command palette search, audit logs, status page infrastructure, CI gates, and production-readiness documentation.",
+    results: [
+      "Tenant-scoped architecture with defense-in-depth checks",
+      "Subscription, invoice, and webhook foundations",
+      "Real-time notifications with polling fallback",
+      "CI, testing, accessibility, and performance checks",
+    ],
+    stack: ["Next.js", "PostgreSQL", "Drizzle", "Redis", "Stripe"],
   },
 ];

@@ -4,7 +4,7 @@ const Footer = () => (
   <footer className="section-divider">
     <div className="section-container py-12 flex flex-col md:flex-row items-center justify-between gap-4">
       <span className="text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Lakshay Kapoor
+        &copy; {new Date().getFullYear()} Lakshay Kapoor
       </span>
       <div className="flex items-center gap-6">
         <Link

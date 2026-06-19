@@ -4,7 +4,7 @@ const ClosingCTA = () => (
   <section className="section-divider">
     <div className="section-container py-28 md:py-36 text-center">
       <h2 className="text-3xl md:text-5xl font-semibold text-foreground fade-up">
-        Building systems that scale.
+        Building products that hold up in real use.
       </h2>
       <div className="mt-10 fade-up stagger-1">
         <Link
