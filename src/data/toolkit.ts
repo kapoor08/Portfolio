@@ -3,22 +3,32 @@ import type { ToolCategory } from "@/types";
 export const categories: ToolCategory[] = [
   {
     label: "Frontend",
-    note: "Modern React-based frontend systems built for performance and scale.",
-    tools: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Native"],
+    note: "Product interfaces built with typed component architectures and responsive UI systems.",
+    tools: ["React", "Next.js", "Angular 19", "TypeScript", "Tailwind CSS"],
   },
   {
-    label: "Backend",
-    note: "Robust server-side architectures with clean, well-documented APIs.",
-    tools: ["Node.js", "FastAPI", "Express", "GraphQL", "tRPC"],
+    label: "Backend & Data",
+    note: "APIs, data models, migrations, and service layers for production applications.",
+    tools: ["Node.js", "Express", "FastAPI", "PostgreSQL", "MongoDB"],
   },
   {
-    label: "Data",
-    note: "Reliable data layers optimized for throughput and consistency.",
-    tools: ["PostgreSQL", "Redis", "ClickHouse", "MongoDB", "Prisma"],
+    label: "Auth, Payments & SaaS",
+    note: "Secure account flows, subscriptions, billing, and permission-driven product features.",
+    tools: ["Auth.js", "Better Auth", "Clerk", "Stripe", "Razorpay"],
   },
   {
-    label: "Infrastructure",
-    note: "Automated pipelines and cloud-native deployment infrastructure.",
-    tools: ["AWS", "Docker", "Terraform", "GitHub Actions", "Vercel"],
+    label: "Cloud & Real-Time",
+    note: "Deployment, live updates, notifications, and infrastructure needed to keep products running.",
+    tools: ["AWS", "Vercel", "GitHub Actions", "Socket.IO", "Redis"],
+  },
+  {
+    label: "AI & Automation",
+    note: "Practical AI features that connect LLMs with product workflows, data, and review loops.",
+    tools: ["LangChain", "LangGraph", "RAG", "Pinecone", "ChromaDB"],
+  },
+  {
+    label: "Quality & Observability",
+    note: "Testing, monitoring, analytics, and feedback loops that make releases safer.",
+    tools: ["Vitest", "Jest", "Playwright", "Sentry", "PostHog"],
   },
 ];

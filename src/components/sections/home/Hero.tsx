@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 
 const techStack = [
   "Next.js",
+  "TypeScript",
   "Node.js",
   "PostgreSQL",
-  "AWS",
-  "React Native",
+  "LangChain",
   "FastAPI",
+  "Stripe",
 ];
 
 const Hero = () => (
@@ -16,12 +17,12 @@ const Hero = () => (
         Lakshay Kapoor
       </h1>
       <p className="text-lg md:text-xl text-muted-foreground/80 font-light mt-3 fade-up stagger-1">
-        Full Stack Engineer
+        Full Stack Developer
       </p>
       <p className="text-base text-[hsl(240_5%_67%)] mt-6 max-w-lg leading-relaxed fade-up stagger-2">
-        Engineering scalable systems
+        Building web, mobile, desktop, and AI-powered products
         <br />
-        from architecture to deployment.
+        from product flow to production release.
       </p>
 
       <div className="flex gap-4 mt-10 fade-up stagger-3">

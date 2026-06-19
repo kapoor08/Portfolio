@@ -7,7 +7,7 @@ const jsonLd = {
   "@type": "ContactPage",
   "url": "https://lakshaykapoor.in/contact",
   "name": "Contact Lakshay Kapoor",
-  "description": "Get in touch with Lakshay Kapoor for engineering projects, system design, and technical collaborations.",
+  "description": "Get in touch with Lakshay Kapoor for full-stack product development, SaaS features, AI integrations, and production application work.",
   "mainEntity": {
     "@type": "Person",
     "name": "Lakshay Kapoor",
@@ -46,7 +46,7 @@ const Contact = () => {
     <Layout>
       <SEO
         title="Contact"
-        description="Have a project or idea? Get in touch with Lakshay Kapoor for engineering projects, system design, and technical collaborations."
+        description="Have a product, platform, or AI-enabled workflow to build? Contact Lakshay Kapoor for full-stack product development."
         canonical="/contact"
         jsonLd={jsonLd}
       />
@@ -55,11 +55,12 @@ const Contact = () => {
           <h1 className="text-4xl md:text-5xl font-semibold text-foreground leading-tight fade-up">
             Let's Build
             <br />
-            Something Meaningful.
+            Something Useful.
           </h1>
           <p className="text-base text-muted-foreground/80 mt-4 max-w-sm leading-relaxed fade-up stagger-1">
-            Have a project, an idea, or a system that needs engineering? I'd
-            like to hear about it.
+            Have a product feature, internal tool, SaaS workflow, or AI
+            integration that needs careful engineering? I'd like to hear about
+            it.
           </p>
 
           <form
@@ -102,7 +103,7 @@ const Contact = () => {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full bg-transparent border border-border rounded-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary focus:bg-card/50 transition-all duration-150 resize-none"
-                placeholder="Tell me about your project..."
+                placeholder="Tell me what you are building..."
               />
             </div>
             <button
@@ -131,14 +132,6 @@ const Contact = () => {
                 className="text-sm accent-link"
               >
                 hello@lakshaykapoor.in
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm accent-link"
-              >
-                LinkedIn
               </a>
             </div>
           </div>

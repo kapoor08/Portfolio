@@ -15,15 +15,29 @@ const jsonLd = {
       "@id": "https://lakshaykapoor.in/#person",
       "name": "Lakshay Kapoor",
       "url": "https://lakshaykapoor.in",
-      "jobTitle": "Full Stack Engineer",
-      "description": "Full Stack Engineer building scalable systems from architecture to deployment.",
-      "knowsAbout": ["React", "Next.js", "Node.js", "PostgreSQL", "AWS", "FastAPI", "Docker", "TypeScript", "Redis", "Kafka"],
+      "jobTitle": "Full Stack Developer",
+      "description": "Full Stack Developer with 3+ years of experience building web, mobile, desktop, SaaS, real-time, and AI-powered applications.",
+      "knowsAbout": [
+        "React",
+        "Next.js",
+        "Angular",
+        "TypeScript",
+        "Node.js",
+        "FastAPI",
+        "PostgreSQL",
+        "MongoDB",
+        "Stripe",
+        "Socket.IO",
+        "LangChain",
+        "LangGraph",
+        "RAG",
+      ],
     },
     {
       "@type": "WebSite",
       "@id": "https://lakshaykapoor.in/#website",
       "url": "https://lakshaykapoor.in",
-      "name": "Lakshay Kapoor — Full Stack Engineer",
+      "name": "Lakshay Kapoor - Full Stack Developer",
       "author": { "@id": "https://lakshaykapoor.in/#person" },
     },
   ],
@@ -32,7 +46,7 @@ const jsonLd = {
 const Index = () => (
   <Layout>
     <SEO
-      description="Full Stack Engineer building scalable systems from architecture to deployment. Specialized in React, Node.js, PostgreSQL, and AWS."
+      description="Lakshay Kapoor is a Full Stack Developer building web, mobile, desktop, SaaS, real-time, and AI-powered applications with React, Next.js, Node.js, FastAPI, PostgreSQL, and LangChain."
       canonical="/"
       jsonLd={jsonLd}
     />

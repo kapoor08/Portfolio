@@ -3,22 +3,22 @@ import type { ProcessStep } from "@/types";
 export const steps: ProcessStep[] = [
   {
     num: "01",
-    title: "Discovery & System Design",
-    desc: "Understanding business requirements, defining system boundaries, and mapping data flows.",
+    title: "Understand the product surface",
+    desc: "Start with users, roles, states, permissions, and the business rules that decide how the feature should behave.",
   },
   {
     num: "02",
-    title: "Architecture & Planning",
-    desc: "Designing scalable architecture, selecting the right tools, and creating implementation roadmaps.",
+    title: "Design the data and API flow",
+    desc: "Map the frontend states, backend contracts, validation rules, auth boundaries, and third-party integrations before writing the main UI.",
   },
   {
     num: "03",
-    title: "Implementation & Optimization",
-    desc: "Writing clean, tested code with performance profiling and iterative refinement.",
+    title: "Build end to end",
+    desc: "Implement the interface, service layer, database changes, integrations, loading states, error paths, and responsive behavior as one complete slice.",
   },
   {
     num: "04",
-    title: "Deployment & Scaling",
-    desc: "CI/CD pipelines, monitoring, and infrastructure automation for reliable delivery.",
+    title: "Harden for real use",
+    desc: "Test important paths, check edge cases, tune performance, document operational details, and make sure the feature can be supported after release.",
   },
 ];

@@ -2,6 +2,9 @@ import { Resend } from "resend";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const contactToEmail = process.env.CONTACT_TO_EMAIL ?? "hello@lakshaykapoor.in";
+const resendFromEmail =
+  process.env.RESEND_FROM_EMAIL ?? "Portfolio Contact <hello@lakshaykapoor.in>";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -20,10 +23,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await resend.emails.send({
-      // Switch from address to "Portfolio Contact <hello@lakshaykapoor.in>" once
-      // lakshaykapoor.in is verified in your Resend dashboard
-      from: "Portfolio Contact <hello@lakshaykapoor.in>",
-      to: "hello@lakshaykapoor.in",
+      from: resendFromEmail,
+      to: contactToEmail,
       replyTo: email,
       subject: `New message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
